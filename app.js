@@ -50,5 +50,5 @@ app.delete('/:filename', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Servidor S3 simulado iniciado em http://localhost:${PORT}`);
+    console.log(`Servidor S3 simulado de Pedrini iniciado em http://localhost:${PORT}`);
 });
