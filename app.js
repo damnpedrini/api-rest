@@ -9,7 +9,7 @@ const storagePath = './storage/';
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    res.send('Bem-vindo à API REST do Servidor S3');
+    res.send('Welcome to the S3 Server REST API');
 });
 
 app.get('/:filename', (req, res) => {
@@ -18,7 +18,7 @@ app.get('/:filename', (req, res) => {
     
     fs.readFile(filePath, (err, data) => {
         if (err) {
-            return res.status(404).send('Arquivo não encontrado');
+            return res.status(404).send('File not found');
         }
         res.send(data);
     });
@@ -31,9 +31,9 @@ app.post('/:filename', (req, res) => {
 
     fs.writeFile(filePath, JSON.stringify(fileData), (err) => {
         if (err) {
-            return res.status(500).send('Erro ao salvar o arquivo');
+            return res.status(500).send('Error saving the file');
         }
-        res.status(201).send('Arquivo salvo com sucesso');
+        res.status(201).send('File saved successfully');
     });
 });
 
@@ -43,12 +43,12 @@ app.delete('/:filename', (req, res) => {
 
     fs.unlink(filePath, (err) => {
         if (err) {
-            return res.status(404).send('Arquivo não encontrado');
+            return res.status(404).send('File not found');
         }
-        res.send('Arquivo deletado com sucesso');
+        res.send('File deleted successfully');
     });
 });
 
 app.listen(PORT, () => {
-    console.log(`Servidor S3 simulado de Pedrini iniciado em http://localhost:${PORT}`);
+    console.log(`Pedrini's simulated S3 server started at http://localhost:${PORT}`);
 });
